@@ -1,21 +1,37 @@
-import React, { useState } from 'react'
+import React, { useState , useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { UserContext } from '../context/UserContext';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
 
 const UserLogin = () => {
   const [Email, SetEmail] = useState('');
   const [Password, SetPassword] = useState('');
   const [UserData, SetUserData] = useState({});
 
-  const submmitHandler = (e)=>{
+  const { User, setUser } = useContext(UserContext);
+  const Navigate = useNavigate();
+
+  const submmitHandler = async (e)=>{
     e.preventDefault();
-    SetUserData({
+
+    const UserData ={
       email: Email,
       password: Password
-    })
+    }
+
+    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/login`, UserData);
+    if (response.status === 200) {
+      const data = response.data;
+      localStorage.setItem('token', data.token);
+      setUser(data.user);
+      Navigate('/home');
+    }
+
     SetEmail('');
     SetPassword('');
-  } 
-
+  }
   return (
     <div className='p-5 h-screen flex flex-col item-center justify-between '>
       <div>

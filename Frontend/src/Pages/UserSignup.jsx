@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios';
+import { UserContext } from '../context/UserContext';
 
 const UserSignup = () => {
     const [email, setEmail] = useState('');
@@ -8,16 +10,34 @@ const UserSignup = () => {
     const [lastName, setLastName] = useState('');
     const [UserData, SetUserData] = useState({});
 
-    const submmitHandler = (e) => {
+    const Navigate = useNavigate();
+
+    const { User , setUser } = React.useContext(UserContext);
+
+    const submmitHandler = async (e) => {
         e.preventDefault();
-        SetUserData({
+        const NewUser={
+            fullname:{
+                firstname: firstName,
+                lastName: lastName
+            },
             email: email,
             password: password,
-            fullname:{
-                firstName: firstName,
-                lastName: lastName
-            }
-        });
+    
+        }
+
+        const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/register`, NewUser);
+
+        if (response.status === 201){
+            const data = response.data;
+            
+            setUser(data.user);
+            localStorage.setItem('token', data.token);
+
+            Navigate('/home');
+        }
+
+
         setEmail('');
         setPassword('');
         setFirstName('');
@@ -69,7 +89,7 @@ const UserSignup = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     className='bg-[#eeeeee] mb-5 px-2 py-2 border rounded-md p-2 w-full' />
 
-                < button className='bg-black text-white mb-5 px-2 py-2 rounded w-full text-lg'>Login</button>
+                < button className='bg-black text-white mb-5 px-2 py-2 rounded w-full text-lg'>Create Account</button>
                 <p className='text-green-900'>Already have a account?  <Link to='/login' className='text-orange-600 text-lg text-bold'> Login here!!</Link></p>
             </form>
         </div>
