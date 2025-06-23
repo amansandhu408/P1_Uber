@@ -23,17 +23,20 @@ const App =()=>{
                 <Route path='/captain-login' element={<CaptainLogin/>} />      
                 <Route path='/captain-signup' element={<CaptainSignup/>} />
                 <Route path='/home' element={
-                    <UserProtectWrapper>
-                        <Home/>
-                    </UserProtectWrapper>
+                    <Home/>
+                    //<UserProtectWrapper>
+                    //    <Home/>
+                    //</UserProtectWrapper>
                 } />
                 <Route path='/user/logout' element={ <UserProtectWrapper>
                     <UserLogout/>
                 </UserProtectWrapper>
                 } />
-                <Route path='/captain-home' element ={ <CaptainProtectWrapper>
+                <Route path='/captain-home' element ={ 
                     <CaptainHome/>
-                </CaptainProtectWrapper>
+                //<CaptainProtectWrapper>
+                //    <CaptainHome/>
+                //</CaptainProtectWrapper>
                 }/>
                 <Route path='/captain/logout' element ={ <CaptainProtectWrapper>
                     <CaptainLogout/>

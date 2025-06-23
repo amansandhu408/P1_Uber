@@ -36,7 +36,7 @@ const CaptainLogin = () => {
   return (
     <div className='p-5 h-screen flex flex-col item-center justify-between '>
       <div>
-        <img className="w-15 mb-3" src="Images/uberdriverlogo.png" alt="Uber logo"/>
+        <img className="w-15 mb-3" src="Images/uberdriverlogo11.png" alt="Uber logo"/>
         <form onSubmit={(e) => {
           submitHandler(e)
         }}>
