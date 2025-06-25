@@ -28,20 +28,20 @@ const App =()=>{
                 <Route path='/captain-login' element={<CaptainLogin/>} />      
                 <Route path='/captain-signup' element={<CaptainSignup/>} />
                 <Route path='/home' element={
-                    <Home/>
-                    //<UserProtectWrapper>
-                    //    <Home/>
-                    //</UserProtectWrapper>
+                    //<Home/>
+            <UserProtectWrapper>
+                <Home/>
+            </UserProtectWrapper>
                 } />
                 <Route path='/user/logout' element={ <UserProtectWrapper>
                     <UserLogout/>
                 </UserProtectWrapper>
                 } />
                 <Route path='/captain-home' element ={ 
+                    //<CaptainHome/>
+                <CaptainProtectWrapper>
                     <CaptainHome/>
-                //<CaptainProtectWrapper>
-                //    <CaptainHome/>
-                //</CaptainProtectWrapper>
+                </CaptainProtectWrapper>
                 }/>
                 <Route path='/captain/logout' element ={ <CaptainProtectWrapper>
                     <CaptainLogout/>

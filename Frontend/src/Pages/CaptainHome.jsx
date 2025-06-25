@@ -42,7 +42,7 @@ const CaptainHome = () => {
             }
         }
 
-        const locationInterval = setInterval(updateLocation, 10000)
+        const LocationInterval = setInterval(updateLocation, 10000)
         updateLocation()
 
         // return () => clearInterval(locationInterval)
@@ -57,7 +57,7 @@ const CaptainHome = () => {
 
     async function confirmRide() {
 
-        const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/rides/confirm`, {
+        await axios.post(`${import.meta.env.VITE_BASE_URL}/rides/confirm`, {
 
             rideId: ride._id,
             captainId: captain._id,

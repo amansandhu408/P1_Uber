@@ -1,6 +1,6 @@
 import React, { useState , useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { UserContext } from '../context/UserContext';
+import { UserDataContext } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -10,7 +10,7 @@ const UserLogin = () => {
   const [Password, SetPassword] = useState('');
   const [UserData, SetUserData] = useState({});
 
-  const { User, setUser } = useContext(UserContext);
+  const { User, setUser } = useContext(UserDataContext);
   const Navigate = useNavigate();
 
   const submmitHandler = async (e)=>{
