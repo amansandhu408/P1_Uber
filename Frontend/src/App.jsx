@@ -18,7 +18,8 @@ import 'remixicon/fonts/remixicon.css'
 
 const App =()=>{
     return (
-        <div>
+        <div className="flex items-center justify-center min-h-screen bg-gray-100">
+            <div className="w-[425px] h-screen bg-white shadow-lg overflow-y-auto">
             <Routes>
                 <Route path='/' element={<Start/>} />
                 <Route path='/login' element={<UserLogin/>} />
@@ -48,6 +49,7 @@ const App =()=>{
                 </CaptainProtectWrapper>
                 }/>
                 </Routes>
+        </div> 
         </div>
     );
 }

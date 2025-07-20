@@ -1,10 +1,27 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Center the mobile container in all screen sizes */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0; /* light gray background outside the phone */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
+/* Simulate the mobile phone screen */
+#root {
+  width: 375px;                /* fixed width like iPhone X */
+  height: 100vh;
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+  overflow-y: auto;            /* allow scroll if content overflows */
+  margin: 0 auto;
+  padding: 0;                  /* remove default spacing */
+  text-align: left;
+}
+
+/* Keep your other styles mostly intact */
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -34,7 +51,7 @@
 }
 
 .card {
-  padding: 2em;
+  padding: 1rem; /* reduce spacing to fit mobile */
 }
 
 .read-the-docs {
